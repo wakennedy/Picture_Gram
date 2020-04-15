@@ -1,2 +1,15 @@
 this is the user show page
 <h1> <%= @user.username %> </h1>
+
+<% @user.pictures.each do |pic| %>
+    <img src=<%=pic.image_url%>>
+<%end%>
+
+
+<%= form_for @picture do |f| %>
+    <%= f.label :image_url %>
+    <%= f.text_field :image_url %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.submit %>
+<%end%>
