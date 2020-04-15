@@ -1,9 +1,4 @@
-this is the user show page
-<% @user.pictures.each do |pic| %>
-    <img src=<%=pic.image_url%>>
-<%end%>
-
-
+this is picture.new
 <%= form_for @picture do |f| %>
     <%= f.label :image_url %>
     <%= f.text_field :image_url %>
@@ -11,6 +6,3 @@ this is the user show page
     <%= f.text_field :title %>
     <%= f.submit %>
 <%end%>
-
-
-<%= link_to "Log Out", '/logout', method: :delete %><br>

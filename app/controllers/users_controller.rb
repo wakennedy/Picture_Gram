@@ -7,17 +7,15 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @picture = @user.pictures.build
         
-        
+    
     end
     def new
         @user = User.new
     end
     def create
         @user = User.new(user_params)
-        
-
         if @user.save
-            #session[:user_id] = @user.id
+            session[:user_id] = @user.id
             redirect_to @user
         else 
             render :new
@@ -27,6 +25,6 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:email, :username, :password)
+        params.require(:user).permit(:email, :username, :password, picture_attributes:[:image_url, :title])
     end
 end

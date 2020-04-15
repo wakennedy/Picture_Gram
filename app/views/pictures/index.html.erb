@@ -1,0 +1,6 @@
+this is the picture index page
+
+<%= @pictures.each do |pic| %>
+    <%= pic.title %><br>
+    <img src=<%=pic.image_url%>><br>
+<%end%>

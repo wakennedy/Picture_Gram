@@ -3,13 +3,26 @@ class SessionsController < ApplicationController
         
     end
  
-    def create
-        user = User.find_by(email: params[:session][:email].downcase)
+
+    def create 
+        @user = User.find_by(email: params[:session][:email])
         session[:user_id] = @user.id
-        redirect_to user
+        redirect_to @user
     end
+
+    #OLD SESSION CREATE
+    # def create
+    #     @user = User.find_by(email: params[:session][:email].downcase)
+    #     if @user
+    #     session[:user_id] = @user.id
+    #     redirect_to @user
+    #     else 
+    #         redirect_to '/signup'
+    #     end
+    # end
+
     def destroy
-        session.delete(:user_id)
-        redirect_to '/signin'
+        session.delete :user_id
+        redirect_to signin_path
     end
 end

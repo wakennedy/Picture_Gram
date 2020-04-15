@@ -4,5 +4,6 @@ class User < ApplicationRecord
     validates :username, :email, uniqueness: true
 
     has_many :pictures
+    accepts_nested_attributes_for :pictures
 
 end
