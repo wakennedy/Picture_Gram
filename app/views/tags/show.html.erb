@@ -1,5 +1,6 @@
 <h1><%=@tag.name %></h1><br>
 <% @tag.pictures.each do |pic| %>
-    <%= link_to pic.title.capitalize, picture_path(pic)%><br>
+    <h2><%= link_to pic.title.capitalize, picture_path(pic)%></h2><br>
+    User: <%= link_to pic.user.username.capitalize, user_path(pic.user)%><br>
     <img src=<%=pic.image_url%>><br>
 <%end%>

@@ -405,26 +405,3 @@ The tag show page should display all the pictures associated with that tag.
 Wouldn't it be awesome if users could *like* other photos. Conceptually, a "like" belongs to the user who added the like and to the photo it was left on.  What columns does this indicate should be on a `likes table`? When a user clicks a button to like a photo, what's the CRUD action they are performing?
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/rails-guided-project-immersive-module-two'>rails-guided-project-immersive-module-two</a> on Learn.co and start learning to code for free.</p>
-
-
-
-
-Questions:
-
-How to build a new picture in the user show page.
-    redirects
-
-
-
-saved code
-<% %>
-    <h1>THIS IS THE HEADER IN application.html.erb <br>
-    <% if current_user != nil %>
-      <h1>Welcome, <%= #current_user.username %></h1><%= link_to "Log out", logout_path, method: "delete" %><br>
-    <% end %><br>
-
-    <% if current_user != nil %>
-    
-      <%= #current_user.username%>
-      <%= link_to "Log Out", '/logout', method: :delete %><br>
-    <%end%>

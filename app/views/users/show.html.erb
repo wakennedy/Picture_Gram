@@ -14,6 +14,7 @@
     <%= f.hidden_field :user_id, :value => @user.id%>
     <%= f.submit %>
 <%end%><br>
+
 <h2><%=@user.username.capitalize%>'s Pictures</h2><br>
 <% @user.pictures.each do |pic| %>
    <h2><%= link_to pic.title.capitalize, picture_path(pic)%></h2><br>

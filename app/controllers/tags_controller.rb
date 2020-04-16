@@ -11,7 +11,7 @@ class TagsController < ApplicationController
         @tags = Tag.all
     end
     def create 
-        @tag = Tag.new(pic_params)
+        @tag = Tag.new(tag_params)
         
         if @tag.save
             redirect_to @tag
@@ -24,7 +24,7 @@ class TagsController < ApplicationController
 
 
     private
-    def pic_params
+    def tag_params
         params.require(:tag).permit(:name)
     end
 end
