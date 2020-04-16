@@ -1,16 +1,27 @@
-this is the user show page
-<% @user.pictures.each do |pic| %>
-    <img src=<%=pic.image_url%>>
-<%end%>
+<h1>Create a new Picture</h1>
 
 
 <%= form_for @picture do |f| %>
     <%= f.label :image_url %>
-    <%= f.text_field :image_url %>
+    <%= f.text_field :image_url %><br>
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title %><br>
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %><br>
+        <%= f.fields_for :tag, @picture.tags.build do |tag_fields| %><br>
+            <%= tag_fields.text_field :name %><br>
+        <% end %>
+    <%= f.hidden_field :user_id, :value => @user.id%>
     <%= f.submit %>
+<%end%><br>
+<h2><%=@user.username.capitalize%>'s Pictures</h2><br>
+<% @user.pictures.each do |pic| %>
+   <h2><%= link_to pic.title.capitalize, picture_path(pic)%></h2><br>
+   Tags: <br>
+   <% pic.tags.each do |tag| %>
+        <%= link_to tag.name.capitalize, tag_path(tag)%><br>
+        <%end%>
+        <br>
+    <img src=<%=pic.image_url%>><br>
 <%end%>
-
-
-<%= link_to "Log Out", '/logout', method: :delete %><br>
+<br>
+<%= link_to "Post a new Pic", new_picture_path %>

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/signin', to: "sessions#new", as: "signin"
   post '/signin', to: "sessions#create"
   get '/user/id', to: "user#show"
+  post '/user/id', to: "pictures#create"
+  delete '/picture/id', to: "picture#destroy", as: "delete"
   resources :picture_tags
   resources :tags
   resources :pictures

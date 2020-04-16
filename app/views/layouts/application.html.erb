@@ -11,8 +11,10 @@
 
   <body>    
     <% if logged_in? %>
-      <h1>Welcome, <%= current_user.username %></h1>
+      <h1>Welcome, <%= link_to current_user.username, current_user %></h1>
+      <p><%= link_to "Post a new Pic", new_picture_path %></p><br>
       <%= link_to "Log Out", '/logout', method: :delete %><br>
+      
     <% end %> <br>
     <%= yield %>
   </body>

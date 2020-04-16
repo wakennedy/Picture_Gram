@@ -1,6 +1,11 @@
-this is the picture index page
-
-<%= @pictures.each do |pic| %>
-    <%= pic.title %><br>
+<% @pictures.each do |pic| %>
+   <h1><%= link_to pic.title.capitalize, picture_path(pic)%></h1><br>
+   Tags: <br>
+   <% pic.tags.each do |tag| %>
+        <%= link_to tag.name, tag_path(tag)%><br>
+        <%end%>
+        <br>
     <img src=<%=pic.image_url%>><br>
 <%end%>
+<br>
+<%= link_to "Post a new Pic", new_picture_path %>

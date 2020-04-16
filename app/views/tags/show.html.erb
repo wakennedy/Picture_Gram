@@ -1,0 +1,5 @@
+<h1><%=@tag.name %></h1><br>
+<% @tag.pictures.each do |pic| %>
+    <%= link_to pic.title.capitalize, picture_path(pic)%><br>
+    <img src=<%=pic.image_url%>><br>
+<%end%>

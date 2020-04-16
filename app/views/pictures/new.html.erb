@@ -1,8 +1,16 @@
 this is picture.new
 <%= form_for @picture do |f| %>
     <%= f.label :image_url %>
-    <%= f.text_field :image_url %>
+    <%= f.text_field :image_url %><br>
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title %><br>
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %><br>
+    <%= f.fields_for :tag, @picture.tags.build do |tag_fields| %><br>
+        <%= tag_fields.text_field :name %><br>
+    <% end %>
+
+
+
+    <%= f.hidden_field :user_id, :value => @user.id%>
     <%= f.submit %>
 <%end%>

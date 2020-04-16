@@ -1,1 +1,8 @@
-this is the picture show page
+Title:
+<%= @picture.title %><br>
+Tags:<br>
+<% @picture.tags.each do |tag| %>
+    <%= tag.name %><br>
+<%end%>
+<img src=<%=@picture.image_url%>><br>
+<%= link_to "Delete Picture", picture_path, method: :delete %>

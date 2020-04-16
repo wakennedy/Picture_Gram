@@ -7,6 +7,8 @@ class PicturesController < ApplicationController
     end
     def new
         @picture = Picture.new
+        @user = current_user
+        @tags = Tag.all
     end
     def create 
         @picture = Picture.new(pic_params)
@@ -14,14 +16,20 @@ class PicturesController < ApplicationController
         if @picture.save
             redirect_to @picture
         else  
+            @user = current_user
             render :new
         end
 
     end
 
+    def destroy
+        @picture = Picture.find(params[:id])
+        @picture.delete
+        redirect_to '/pictures'
+    end
 
     private
     def pic_params
-        params.require(:picture).permit(:title, :image_url)
+        params.require(:picture).permit(:title, :image_url, :user_id, tag_ids:[])
     end
 end
