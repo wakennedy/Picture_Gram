@@ -9,6 +9,7 @@ class PicturesController < ApplicationController
         @picture = Picture.new
         @user = current_user
         @tags = Tag.all
+        @tag = Tag.new
     end
     def create 
         @picture = Picture.new(pic_params)
@@ -19,7 +20,6 @@ class PicturesController < ApplicationController
             @user = current_user
             render :new
         end
-
     end
 
     def destroy
@@ -30,6 +30,6 @@ class PicturesController < ApplicationController
 
     private
     def pic_params
-        params.require(:picture).permit(:title, :image_url, :user_id, tag_ids:[])
+        params.require(:picture).permit(:title, :image_url, :user_id, tag_ids:[], tag_attributes:[:name])
     end
 end

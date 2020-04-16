@@ -7,8 +7,9 @@
     <%= f.label :title %>
     <%= f.text_field :title %><br>
     <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %><br>
-        <%= f.fields_for :tag, @picture.tags.build do |tag_fields| %><br>
-            <%= tag_fields.text_field :name %><br>
+        <%= f.fields_for :tags, @picture.tags.build do |tag| %><br>
+            <%= tag.label "Create a new Tag"%><br>
+            <%= tag.text_field :name %><br>
         <% end %>
     <%= f.hidden_field :user_id, :value => @user.id%>
     <%= f.submit %>
@@ -23,5 +24,3 @@
         <br>
     <img src=<%=pic.image_url%>><br>
 <%end%>
-<br>
-<%= link_to "Post a new Pic", new_picture_path %>

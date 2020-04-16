@@ -1,8 +1,9 @@
+<%= link_to @picture.user.username, user_path(@picture.user)%><br>
 Title:
 <%= @picture.title %><br>
 Tags:<br>
 <% @picture.tags.each do |tag| %>
-    <%= tag.name %><br>
+    <%= link_to tag.name, tag_path(tag) %><br>
 <%end%>
 <img src=<%=@picture.image_url%>><br>
 <%= link_to "Delete Picture", picture_path, method: :delete %>

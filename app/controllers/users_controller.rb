@@ -6,6 +6,7 @@ class UsersController < ApplicationController
         #return head(:forbidden) unless session.include? :user_id
         @user = User.find(params[:id])
         @picture = Picture.new
+        @tag = Tag.new
     end
     def new
         @user = User.new
