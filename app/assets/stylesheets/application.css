@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+ nav a{
+    color:black;
+}
+nav a:hover {
+   color:red;
+}
+body {background-color: lightgrey;}
+
+div.a {text-align: left;}
+div.b {text-align: right; vertical-align: text-top;}

@@ -1,5 +1,7 @@
+<h1>All Pictures</h1>
 <% @pictures.each do |pic| %>
-   <h1><%= link_to pic.title.capitalize, picture_path(pic)%></h1><br>
+   <h2><%= link_to pic.title.capitalize, picture_path(pic)%></h2>
+    <%= pic.created_at %><br>
    Tags: <br>
    <% pic.tags.each do |tag| %>
         <%= link_to tag.name, tag_path(tag)%><br>

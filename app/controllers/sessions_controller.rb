@@ -5,9 +5,16 @@ class SessionsController < ApplicationController
  
 
     def create 
-        @user = User.find_by(email: params[:session][:email])
-        session[:user_id] = @user.id
-        redirect_to @user
+        if @user = User.find_by(email: params[:session][:email]).try(:authenticate, params[:session][:password])
+            session[:user_id] = @user.id
+            redirect_to @user
+        else
+            flash[:notice] = "Email or Password incorrect"
+            render :new
+        end
+
+        #eturn head(:forbidden) unless @user.authenticate(params[:session][:password])
+        
     end
 
     #OLD SESSION CREATE
