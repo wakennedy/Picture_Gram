@@ -15,7 +15,7 @@
 #     )
 # end
    
-["Nature", "NYC", "Art", "Humor"].each do |tag_name|
+["Nature", "Humor"].each do |tag_name|
     Tag.create(name: tag_name)
 end
    
