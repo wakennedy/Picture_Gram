@@ -10,6 +10,10 @@
   </head>
 
   <body>    
+    
+    <% if logged_in? %>
+      <h1>Welcome, <%= link_to current_user.username.capitalize, current_user %></h1>
+    <%end%>
     <%= render 'layouts/navigation' %>
     <%= yield %>
   </body>

@@ -1,27 +1,29 @@
-<h1>Create a new Picture</h1>
-
-
+<h2>Create a new Picture</h2>
 <%= form_for @picture do |f| %>
-    <%= f.label :image_url %>
+    <%= f.label :image_url %><br>
     <%= f.text_field :image_url %><br>
-    <%= f.label :title %>
+    <%= f.label :title %><br>
     <%= f.text_field :title %><br>
-    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %><br>
+    <%= f.label "Tags"%><br>
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
         <%= f.fields_for :tags, @picture.tags.build do |tag| %><br>
             <%= tag.label "Create a new Tag"%><br>
             <%= tag.text_field :name %><br>
         <% end %>
-    <%= f.hidden_field :user_id, :value => @user.id%>
+    <%= f.hidden_field :user_id, :value => current_user.id%>
     <%= f.submit %>
 <%end%><br>
 
 <h2><%=@user.username.capitalize%>'s Pictures</h2><br>
-<% @user.pictures.each do |pic| %>
-   <h2><%= link_to pic.title.capitalize, picture_path(pic)%></h2><br>
-   Tags: <br>
+<% @user.pictures.sort_by{|pic| pic.created_at}.reverse.each do |pic| %>
+   <h2>Title: <%= link_to pic.title.capitalize, picture_path(pic)%></h2>
+   Created: <%= pic.created_at %><br>
+   <img src=<%=pic.image_url%>><br>
+   Tags: 
    <% pic.tags.each do |tag| %>
-        <%= link_to tag.name.capitalize, tag_path(tag)%><br>
-        <%end%>
-        <br>
-    <img src=<%=pic.image_url%>><br>
+        <%= link_to tag.name.capitalize, tag_path(tag)%>
+    <%end%>
+    <br>
+    <br>
+    
 <%end%>

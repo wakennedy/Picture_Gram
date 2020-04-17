@@ -1,9 +1,10 @@
-<%= link_to @picture.user.username, user_path(@picture.user)%><br>
-Title:
-<%= @picture.title %><br>
-Tags:<br>
-<% @picture.tags.each do |tag| %>
-    <%= link_to tag.name, tag_path(tag) %><br>
-<%end%>
+<h1>Title: <%= @picture.title.capitalize %></h1><br>
+User:<%= link_to @picture.user.username.capitalize, user_path(@picture.user)%><br>
+Created: <%= @picture.created_at %><br>
 <img src=<%=@picture.image_url%>><br>
+Tags:
+<% @picture.tags.each do |tag| %>
+    <%= link_to tag.name, tag_path(tag) %>
+<%end%><br>
+<br>
 <%= link_to "Delete Picture", picture_path, method: :delete %>

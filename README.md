@@ -1,29 +1,3 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
 # Flatiron Picture-gram
 
 ## Your Task
@@ -405,18 +379,3 @@ The tag show page should display all the pictures associated with that tag.
 Wouldn't it be awesome if users could *like* other photos. Conceptually, a "like" belongs to the user who added the like and to the photo it was left on.  What columns does this indicate should be on a `likes table`? When a user clicks a button to like a photo, what's the CRUD action they are performing?
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/rails-guided-project-immersive-module-two'>rails-guided-project-immersive-module-two</a> on Learn.co and start learning to code for free.</p>
-
-<nav class="navbar">
-    <% if logged_in? %>
-        <table>
-        <tr><td><h1>Welcome, <%= link_to current_user.username, current_user %></h1></td>
-        <td width=50%><%= link_to "LOG OUT", '/logout', method: :delete %><td></tr>
-        <%= link_to "My Pictures", user_path(current_user), class: "nav-link" %>
-        <%= link_to "All Pictures", pictures_path(:index), class: "nav-link" %>
-        <%= link_to "Post a new Picture", new_picture_path, class: "nav-link" %>
-        
-        </table>
-    <%end%>
-
-
-</nav>

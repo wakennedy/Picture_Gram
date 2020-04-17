@@ -14,13 +14,44 @@
  *= require_self
  */
 
- nav a{
+/* nav a{
     color:black;
-}
+    }
+nav {background-color: lightsteelblue;}
 nav a:hover {
    color:red;
 }
 body {background-color: lightgrey;}
 
-div.a {text-align: left;}
-div.b {text-align: right; vertical-align: text-top;}
+h1 {text-align: left;}
+h2 {text-align: right;}
+h3 {text-align: left;} */
+body {background-color: lightgrey;}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+  li a:hover {
+    color:red;
+    background-color: grey;
+ }
+

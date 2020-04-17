@@ -1,13 +1,15 @@
 <h1>All Pictures</h1>
 <% @pictures.each do |pic| %>
-   <h2><%= link_to pic.title.capitalize, picture_path(pic)%></h2>
-    <%= pic.created_at %><br>
-   Tags: <br>
+   <h2>Title: <%= link_to pic.title.capitalize, picture_path(pic)%></h2>
+   User: <%= link_to pic.user.username.capitalize, user_path(pic.user)%><br>
+    Created: <%= pic.created_at %><br>
+    <img src=<%=pic.image_url%>><br>
+   Tags: 
    <% pic.tags.each do |tag| %>
-        <%= link_to tag.name, tag_path(tag)%><br>
+        <%= link_to tag.name, tag_path(tag)%>
         <%end%>
         <br>
-    <img src=<%=pic.image_url%>><br>
+    
 <%end%>
 <br>
 <%= link_to "Post a new Pic", new_picture_path %>

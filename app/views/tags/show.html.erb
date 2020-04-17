@@ -1,6 +1,13 @@
-<h1><%=@tag.name %></h1><br>
-<% @tag.pictures.each do |pic| %>
-    <h2><%= link_to pic.title.capitalize, picture_path(pic)%></h2><br>
+<h1><%=@tag.name %></h1>
+<h3><%=@tag.pictures.count%> pictures have this tag</h3>
+<% @tag.pictures.sort_by{|pic| pic.created_at}.reverse.each do |pic| %>
+    <h2>Title: <%= link_to pic.title.capitalize, picture_path(pic)%></h2><br>
     User: <%= link_to pic.user.username.capitalize, user_path(pic.user)%><br>
+    Created: <%= pic.created_at %><br>
     <img src=<%=pic.image_url%>><br>
+    Tags: <% pic.tags.each do |tag| %>
+        <%= link_to tag.name, tag_path(tag) %>
+    <%end%><br>
+    <br>
+    <br>
 <%end%>
